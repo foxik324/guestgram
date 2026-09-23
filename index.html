@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuestGram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="loginScreen" class="screen">
+    <div class="login-card">
+
+        <div class="logo">G</div>
+
+        <h1>GuestGram</h1>
+        <p class="subtitle">Мессенджер без регистрации</p>
+
+        <input
+            id="usernameInput"
+            type="text"
+            placeholder="Введите юзернейм"
+            maxlength="20"
+            autocomplete="off"
+        >
+
+        <button id="loginButton">
+            Войти
+        </button>
+
+        <div id="loginError"></div>
+
+        <div class="login-info">
+            Только юзернейм.<br>
+            Если имя уже занято — выбрать другое.
+        </div>
+
+    </div>
+</div>
+
+
+<div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="brand">
+                <div class="brand-logo">G</div>
+                <span>GuestGram</span>
+            </div>
+
+            <button id="profileButton" class="profile-button">
+                <div id="myAvatar" class="avatar">G</div>
+
+                <div class="my-info">
+                    <strong id="myName">User</strong>
+                    <span id="myUsername">@user</span>
+                </div>
+
+                <span class="dots">•••</span>
+            </button>
+
+        </div>
+
+
+        <div class="search-box">
+            <span>⌕</span>
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Поиск пользователей..."
+                autocomplete="off"
+            >
+        </div>
+
+
+        <div class="section-title">
+            Пользователи
+        </div>
+
+        <div id="usersList" class="users-list"></div>
+
+    </aside>
+
+
+    <!-- CHAT -->
+
+    <main class="chat">
+
+        <div id="emptyChat" class="empty-chat">
+
+            <div class="empty-icon">💬</div>
+
+            <h2>Добро пожаловать в GuestGram</h2>
+
+            <p>
+                Выберите пользователя слева,<br>
+                чтобы начать общение.
+            </p>
+
+        </div>
+
+
+        <div id="chatWindow" class="chat-window hidden">
+
+            <header class="chat-header">
+
+                <div id="chatAvatar" class="avatar">
+                    G
+                </div>
+
+                <div class="chat-user-info">
+
+                    <strong id="chatName">
+                        User
+                    </strong>
+
+                    <span id="chatStatus">
+                        offline
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <div id="messages" class="messages"></div>
+
+
+            <div class="message-area">
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    placeholder="Напишите сообщение..."
+                    maxlength="2000"
+                    autocomplete="off"
+                >
+
+                <button id="sendButton">
+                    ➤
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div id="profileModal" class="modal hidden">
+
+    <div class="modal-card">
+
+        <button id="closeProfile" class="close">
+            ×
+        </button>
+
+        <h2>Мой профиль</h2>
+
+        <div class="big-avatar" id="profileAvatarPreview">
+            G
+        </div>
+
+        <label>
+            Имя
+        </label>
+
+        <input
+            id="profileName"
+            type="text"
+            maxlength="40"
+        >
+
+        <label>
+            Аватар
+        </label>
+
+        <input
+            id="profileAvatar"
+            type="text"
+            placeholder="URL изображения"
+            maxlength="500"
+        >
+
+        <label>
+            О себе
+        </label>
+
+        <textarea
+            id="profileBio"
+            maxlength="150"
+            placeholder="Расскажите немного о себе..."
+        ></textarea>
+
+        <button id="saveProfile">
+            Сохранить
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
